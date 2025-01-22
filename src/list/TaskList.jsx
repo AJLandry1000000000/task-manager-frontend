@@ -1,6 +1,6 @@
 import React from "react";
 
-const TaskList = ({ data, onTaskClick, formatDate }) => {
+const TaskList = ({ data, onTaskClick, formatDate, onNextPage, onPreviousPage, page  }) => {
 
     return (
         <div>
@@ -10,7 +10,15 @@ const TaskList = ({ data, onTaskClick, formatDate }) => {
                     <p>Due date: {formatDate(item.due_date)}</p>
                 </div>
             ))}
+            
+            <hr />
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <button onClick={onPreviousPage} disabled={page === 1} style={{ marginRight: '10px' }}>Previous</button>
+                <button onClick={onNextPage}>Next</button>
+            </div>
         </div>
+        
     )
 };
 

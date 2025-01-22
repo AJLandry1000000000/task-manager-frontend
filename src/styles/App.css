@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+.popup-container {
+  width: 700px;
+}
+
+.popup-container label {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+header {
+  display: 'flex';
+  align-items: 'center'
+}
+
+.top-page-buttons {
+  display: 'flex';
+  justify-content: 'center';
+}

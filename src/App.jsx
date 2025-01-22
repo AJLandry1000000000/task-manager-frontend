@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { getAllTasks } from './api/api'
 import CheckboxLogo from './logo/CheckboxLogo'
 import TaskList from './list/TaskList'
 import Popup from './list/Popup'
-import './App.css'
+import './styles/App.css'
 
 function App() {
   const [page, setPage] = useState(1)
   const [data, setData] = useState(null)
   const [selectedData, setSelectedData] = useState(null)
+  const [popupStatus, setPopupStatus] = useState('viewing')
   
   useEffect(() => {
     getAllTasks(page).then((data) => {
@@ -18,8 +18,8 @@ function App() {
       console.error("Error fetching data:", error)
     })
 
-      console.log(data)
-  }, [])
+    console.log(data)
+  }, [page])
 
   const handleTaskClick = (item) => {
     setSelectedData(item)
@@ -27,6 +27,34 @@ function App() {
 
   const handleCloseTaskClick = () => {
     setSelectedData(null)
+    setPopupStatus('viewing')
+  }
+
+  const handleSave = () => {
+    setSelectedData(null)
+    setPopupStatus('viewing')
+    getAllTasks(page).then((data) => {
+      setData(data.data)
+    }).catch(error => {
+      console.error("Error fetching data:", error)
+    })
+  }
+
+  const handleEditTaskClick = () => {
+    setPopupStatus('editing')
+  }
+
+  const handleCreateTaskClick = () => {
+    setSelectedData({ name: '', description: '', due_date: '' })
+    setPopupStatus('creating')
+  }
+
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1)
+  }
+
+  const handlePreviousPage = () => {
+    setPage(prevPage => Math.max(prevPage - 1, 1))
   }
 
   const formatDate = (dateString) => {
@@ -41,7 +69,7 @@ function App() {
 
   return (
     <>
-      <header style={{ display: 'flex', alignItems: 'center' }}>
+      <header>
         <CheckboxLogo />
         <h1           
           onMouseOver={(e) => e.target.style.color = 'rgba(4, 176, 4, 0.5)'} 
@@ -52,9 +80,11 @@ function App() {
 
       <hr />
 
-      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+      {data && <p>Data from server: {JSON.stringify(data)}</p>}
+
+      <div>
         <button 
-          onClick={() => setData({})}
+          onClick={handleCreateTaskClick}
           onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(73, 245, 39, 0.4)'} 
           onMouseOut={(e) => e.target.style.backgroundColor = ''}>
           Create Task
@@ -67,11 +97,9 @@ function App() {
         </button>
       </div>
     
-      {/* {data && <p>Data from server: {JSON.stringify(data)}</p>} */}
-
-      {data && <TaskList data={data} onTaskClick={handleTaskClick} formatDate={formatDate} />}
+      {data && <TaskList data={data} onTaskClick={handleTaskClick} formatDate={formatDate} onNextPage={handleNextPage} onPreviousPage={handlePreviousPage} page={page} />}
       
-      {selectedData && <Popup data={selectedData} onClose={handleCloseTaskClick} formatDate={formatDate} />}
+      {selectedData && <Popup data={selectedData} onClose={handleCloseTaskClick} formatDate={formatDate} status={popupStatus} onSave={handleSave} onEdit={handleEditTaskClick} />}
 
     </>
   )
