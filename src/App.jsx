@@ -63,7 +63,7 @@ function App() {
     const dateYear = dateObject.getFullYear();
     const dateHours = dateObject.getHours().toString().padStart(2, '0');
     const dateMinutes = dateObject.getMinutes().toString().padStart(2, '0');
-    return `${dateMinutes}:${dateHours}   ${dateDay}-${dateMonth}-${dateYear}`;
+    return `${dateDay}-${dateMonth}-${dateYear}   ${dateHours}:${dateMinutes}`;
   }
 
   return (
@@ -89,7 +89,7 @@ function App() {
           Create Task
         </button>
         <button 
-          onClick={() => setData({})}
+          onClick={() => {console.log('Filtering tasks functionality does not need to be implemented at this time.')}}
           onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(31, 62, 237, 0.4)'} 
           onMouseOut={(e) => e.target.style.backgroundColor = ''}>
           Filter Tasks
