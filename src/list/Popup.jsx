@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { createTask, updateTask } from '../api/api'
-// import './styles/Popup.css' // TO DO
 
 const Popup = ({ data, onClose, formatDate, status, onSave, onEdit }) => {
     const [taskData, setTaskData] = useState(data || { name: '', description: '', due_date: '' })

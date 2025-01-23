@@ -8,7 +8,7 @@ export const getAllTasks = async (page) => {
     try {
         const response = await axiosInstance({
             method: "GET",
-            url: `/tasks-all/${page}`,
+            url: `/tasks-get/${page}`,
         })
         return response.data;
     } catch (error) {

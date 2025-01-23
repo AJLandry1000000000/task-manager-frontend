@@ -18,7 +18,6 @@ function App() {
       console.error("Error fetching data:", error)
     })
 
-    console.log(data)
   }, [page])
 
   const handleTaskClick = (item) => {
@@ -80,7 +79,7 @@ function App() {
 
       <hr />
 
-      {data && <p>Data from server: {JSON.stringify(data)}</p>}
+      {/* {data && <p>Data from server: {JSON.stringify(data)}</p>} */}
 
       <div>
         <button 
