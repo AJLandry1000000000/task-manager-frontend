@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getAllTasks } from './api/api'
-import CheckboxLogo from './logo/CheckboxLogo'
+import CheckMarkLogo from './logo/CheckMarkLogo'
 import TaskList from './list/TaskList'
 import Popup from './list/Popup'
 import './styles/App.css'
@@ -69,11 +69,11 @@ function App() {
   return (
     <>
       <header>
-        <CheckboxLogo />
+        <CheckMarkLogo />
         <h1           
           onMouseOver={(e) => e.target.style.color = 'rgba(4, 176, 4, 0.5)'} 
           onMouseOut={(e) => e.target.style.color = ''}>
-          Checkbox.ai Task Management
+          Task Manager
           </h1>
       </header>
 
