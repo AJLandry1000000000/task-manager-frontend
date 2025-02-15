@@ -39,7 +39,7 @@ You also discussed that one of the key risks would be that there may be huge vol
 
 
 ## Technologies used
-The technologies included in this entire project (including the [front-end](https://github.com/AJLandry1000000000/react-task-management), [back-end](https://github.com/AJLandry1000000000/task-management-app), containerisation, database, etc) are...
+The technologies included in this entire project (including the [front-end](https://github.com/AJLandry1000000000/task-manager-frontend), [back-end](https://github.com/AJLandry1000000000/task-manager-backend), containerisation, database, etc) are...
 - Backend: Typescript
 - Frontend: React + Vite 
 - Package manager: Node Package Manager (npm)
@@ -52,7 +52,7 @@ Note: To complete these steps you will need to install NodeJS, Typescript, Docke
 
 ### Clone the repository
 Run the following commands in your terminal to clone the code repository:  
-```git clone https://github.com/AJLandry1000000000/react-task-management.git```
+```git clone https://github.com/AJLandry1000000000/task-manager-frontend.git```
 
 ### Install the packages
 Run the following commands to your root directory to install the node packages:  
@@ -60,7 +60,7 @@ Run the following commands to your root directory to install the node packages:
 
 ## Steps to run
 ### Include the scripts in package.json
-Once the [back-end](https://github.com/AJLandry1000000000/task-management-app) has been installed, configured and started, all you have to do is start the front-end.
+Once the [back-end](https://github.com/AJLandry1000000000/task-manager-backend) has been installed, configured and started, all you have to do is start the front-end.
 In your root folder run the following ```package.json``` script to compile and start the front-end application:  
 ```npm run dev```
 
