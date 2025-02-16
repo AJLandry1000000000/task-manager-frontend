@@ -1,21 +1,35 @@
 import React from "react";
+import "../styles/TaskList.css";
 
 const TaskList = ({ data, onTaskClick, formatDate, onNextPage, onPreviousPage, page  }) => {
 
     return (
         <div>
             {data.map((item, index) => (
-                <div key={index} onClick={() => onTaskClick(item)} style={{ display: 'flex', justifyContent: 'space-between', border: '1px solid black', padding: '2px 5px', margin: '5px', cursor: 'pointer' }}>
-                    <p style={{ fontWeight: 'bold' }}>{item.name}</p>
+                <div 
+                key={index} 
+                onClick={() => onTaskClick(item)} 
+                className="listing-item"
+                >
+                    <p className="item-name">{item.name}</p>
                     <p>Due date: {formatDate(item.due_date)}</p>
                 </div>
             ))}
             
             <hr />
 
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <button onClick={onPreviousPage} disabled={page === 1} style={{ marginRight: '10px' }}>Previous</button>
-                <button onClick={onNextPage}>Next</button>
+            <div className="page-buttons">
+                <button 
+                onClick={onPreviousPage} 
+                disabled={page === 1} 
+                className="page-previous-button">
+                    Previous
+                </button>
+                <button 
+                onClick={onNextPage}
+                >
+                    Next
+                </button>
             </div>
         </div>
         

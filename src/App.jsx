@@ -70,11 +70,9 @@ function App() {
     <>
       <header>
         <CheckMarkLogo />
-        <h1           
-          onMouseOver={(e) => e.target.style.color = 'rgba(4, 176, 4, 0.5)'} 
-          onMouseOut={(e) => e.target.style.color = ''}>
+        <h1 className="header-title">
           Task Manager
-          </h1>
+        </h1>
       </header>
 
       <hr />
@@ -84,14 +82,12 @@ function App() {
       <div>
         <button 
           onClick={handleCreateTaskClick}
-          onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(73, 245, 39, 0.4)'} 
-          onMouseOut={(e) => e.target.style.backgroundColor = ''}>
+          className="create-task-button">
           Create Task
         </button>
         <button 
           onClick={() => {console.log('Filtering tasks functionality does not need to be implemented at this time.')}}
-          onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(31, 62, 237, 0.4)'} 
-          onMouseOut={(e) => e.target.style.backgroundColor = ''}>
+          className='filter-tasks-button'>
           Filter Tasks
         </button>
       </div>
